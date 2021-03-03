@@ -16,6 +16,8 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
 
+import androidx.fragment.app.Fragment;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -51,6 +53,13 @@ public class MainActivity extends AppCompatActivity
                                     }
                                 }
         );
+
+        if (savedInstanceState == null) {
+            getSupportFragmentManager().beginTransaction()
+                    .setReorderingAllowed(true)
+                    .add(R.id.fragment_container_view, CurrentTaskFragment.class, null)
+                    .commit();
+        }
     }
 
     @Override
